@@ -50,6 +50,9 @@ export default function VideoPlayer({ files, poster }: Props) {
   const [hasError, setHasError] = useState(false);
 
   const activeFile = files[activeIndex];
+  const proxiedUrl = activeFile?.url
+    ? `/api/proxy?url=${encodeURIComponent(activeFile.url)}`
+    : "";
   const showControls = controlsVisible || !isPlaying;
 
   const scheduleHide = useCallback(() => {
@@ -240,7 +243,7 @@ export default function VideoPlayer({ files, poster }: Props) {
     >
       <video
         ref={videoRef}
-        src={activeFile?.url}
+        src={proxiedUrl}
         poster={poster}
         className="w-full aspect-video"
         playsInline

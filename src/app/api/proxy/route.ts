@@ -40,9 +40,10 @@ export async function GET(request: NextRequest) {
     // Always advertise range support
     if (!acceptRanges) responseHeaders["Accept-Ranges"] = "bytes";
 
-    const buffer = await res.arrayBuffer();
+    // Stream response instead of buffering entire file
+    const body = res.body;
 
-    return new NextResponse(buffer, {
+    return new NextResponse(body, {
       status: res.status === 206 ? 206 : 200,
       headers: responseHeaders,
     });
