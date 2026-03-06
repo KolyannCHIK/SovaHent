@@ -1,36 +1,124 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
 
-## Getting Started
+# 🦉 SovaHent
 
-First, run the development server:
+**Красивое зеркало-парсер аниме-каталога с собственным плеером**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
+![TailwindCSS](https://img.shields.io/badge/Tailwind-4-06B6D4?logo=tailwindcss)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript)
+
+</div>
+
+---
+
+## О проекте
+
+**SovaHent** — неофициальное зеркало аниме-каталога [Hentasis](http://hentasis1.top/), которое в реальном времени парсит контент с оригинального сайта и отображает его в современном, удобном интерфейсе. Проект не хранит медиафайлы и не является правообладателем контента.
+
+### Зачем?
+
+- Оригинальный сайт Hentasis имеет устаревший дизайн и неудобную навигацию
+- Нет нативного видеоплеера — только iframe-обёртки
+- Нет адаптивной мобильной версии
+
+SovaHent решает эти проблемы, предоставляя полностью переработанный UI с тёмной аниме-тематикой.
+
+## Возможности
+
+### Каталог
+- Карточки аниме с постерами, бейджами озвучки/субтитров/года
+- Пагинация с навигацией по страницам
+- Фильтрация по жанрам через боковую панель
+
+### Видеоплеер
+- Нативный HTML5 `<video>` плеер без iframe
+- Переключение между файлами (озвучка / субтитры / серии)
+- Управление скоростью воспроизведения (0.25x — 2x)
+- Прогресс-бар с отображением буферизации
+- Горячие клавиши: `Space/K` — пауза, `←/→` — перемотка, `↑/↓` — громкость, `F` — полный экран, `M` — мут
+- Автоскрытие элементов управления
+
+### Аудиоплеер
+- Отдельный плеер для саундтреков с брендингом **Lunar**
+- Анимация виниловой пластинки при воспроизведении
+- Список треков с индикатором воспроизведения
+- Управление громкостью и переключение треков
+
+### Комментарии
+- Парсинг комментариев с сохранением форматирования (стихи, многострочный текст)
+- Красивое оформление цитат и ответов
+- Особое выделение комментариев от **Lunar** с бейджем
+
+### Прочее
+- Баннер-предупреждение о зеркале с возможностью закрытия
+- Прокси для изображений и аудио (обход hotlink-защиты)
+- SSR + клиентский рендеринг
+- Полностью адаптивный дизайн
+
+## Стек технологий
+
+| Технология | Назначение |
+|---|---|
+| **Next.js 16** | Фреймворк (App Router, API Routes) |
+| **React 19** | UI-компоненты |
+| **TypeScript** | Типизация |
+| **Tailwind CSS 4** | Стилизация |
+| **Cheerio** | HTML-парсинг (серверный скрапинг) |
+| **Lucide React** | Иконки |
+
+## Структура проекта
+
+```
+src/
+├── app/
+│   ├── api/
+│   │   ├── anime/          # API: список аниме, детали по slug
+│   │   └── proxy/          # Прокси для медиа (обход CORS/hotlink)
+│   ├── watch/[slug]/       # Страница просмотра
+│   └── page.tsx            # Главная страница каталога
+├── components/
+│   ├── VideoPlayer.tsx     # Кастомный видеоплеер
+│   ├── AudioPlayer.tsx     # Аудиоплеер (Lunar саундтреки)
+│   ├── AnimeCard.tsx       # Карточка аниме
+│   ├── AnimeGrid.tsx       # Сетка каталога
+│   ├── MirrorBanner.tsx    # Баннер-предупреждение
+│   └── Sidebar.tsx         # Боковая панель с жанрами
+└── lib/
+    └── scraper.ts          # Парсер: список аниме, детали, файлы, комментарии
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Быстрый старт
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Клонирование
+git clone https://github.com/KolyannCHIK/SovaHent.git
+cd SovaHent
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Установка зависимостей
+npm install
 
-## Learn More
+# Запуск dev-сервера
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Открыть [http://localhost:3000](http://localhost:3000)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Скриншоты
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+> *Скриншоты будут добавлены позже*
 
-## Deploy on Vercel
+## Дисклеймер
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+> **Данный проект создан исключительно в образовательных целях** для изучения веб-скрапинга, серверного рендеринга и построения современных React-приложений. Все медиафайлы принадлежат их правообладателям. Проект не хранит и не распространяет контент — он лишь проксирует данные с оригинального источника в реальном времени.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+<div align="center">
+
+**SovaHent** &copy; 2026
+
+*Сделано с помощью Next.js, Tailwind CSS и Cheerio*
+
+</div>
