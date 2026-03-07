@@ -9,6 +9,8 @@
 ![TailwindCSS](https://img.shields.io/badge/Tailwind-4-06B6D4?logo=tailwindcss)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript)
 
+🌐 **[hent.sovadev.space](https://hent.sovadev.space)**
+
 </div>
 
 ---
@@ -89,25 +91,72 @@ src/
     └── scraper.ts          # Парсер: список аниме, детали, файлы, комментарии
 ```
 
-## Быстрый старт
+## Установка на сервер (VDS)
+
+Для установки нужен **любой Linux-сервер** (Ubuntu, Debian, CentOS, Fedora, Arch...) и **домен**, привязанный к IP сервера.
+
+### 1. Подключитесь к серверу
 
 ```bash
-# Клонирование
+ssh root@ваш-сервер
+```
+
+### 2. Скачайте проект
+
+```bash
+git clone https://github.com/KolyannCHIK/SovaHent.git /opt/sovahent
+```
+
+### 3. Запустите установщик
+
+```bash
+cd /opt/sovahent
+chmod +x deploy.sh
+sudo bash deploy.sh
+```
+
+Скрипт сам спросит:
+- **Домен** — например `hent.example.com`
+- **Порт** — можно оставить по умолчанию (3200)
+- **Email** — для SSL-сертификата
+
+Всё остальное (Node.js, PM2, Nginx, SSL) установится автоматически.
+
+### 4. Готово!
+
+Сайт доступен по адресу `https://ваш-домен`. Всё работает.
+
+### Обновление
+
+Когда выйдет новая версия — одна команда:
+
+```bash
+cd /opt/sovahent && sudo bash deploy.sh --update
+```
+
+### Полезные команды
+
+| Команда | Что делает |
+|---|---|
+| `pm2 status` | Статус приложения |
+| `pm2 logs sovahent` | Логи |
+| `pm2 restart sovahent` | Перезапуск |
+| `pm2 stop sovahent` | Остановка |
+
+---
+
+## Локальная разработка
+
+Если хотите запустить проект у себя на компьютере:
+
+```bash
 git clone https://github.com/KolyannCHIK/SovaHent.git
 cd SovaHent
-
-# Установка зависимостей
 npm install
-
-# Запуск dev-сервера
 npm run dev
 ```
 
 Открыть [http://localhost:3000](http://localhost:3000)
-
-## Скриншоты
-
-> *Скриншоты будут добавлены позже*
 
 ## Дисклеймер
 

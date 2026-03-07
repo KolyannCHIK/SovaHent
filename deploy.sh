@@ -4,8 +4,7 @@ set -e
 # ============================================================
 #  SovaHent — универсальный скрипт установки / обновления
 #
-#  Поддержка: Ubuntu, Debian, CentOS, RHEL, Fedora, Alma, Rocky
-#  Безопасен для серверов с Pterodactyl Panel + Wings
+#  Поддержка: Ubuntu, Debian, CentOS, RHEL, Fedora, Alma, Rocky, Arch, Alpine
 #
 #  Что делает:
 #  1. Спрашивает домен, порт, email (или берёт из аргументов)
