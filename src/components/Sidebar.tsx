@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Tag, Calendar, Sparkles } from "lucide-react";
 import { GENRES, YEARS } from "@/lib/scraper";
+import PollWidget from "@/components/PollWidget";
 
 export default function Sidebar() {
   const searchParams = useSearchParams();
@@ -47,6 +48,8 @@ export default function Sidebar() {
           ))}
         </div>
       </div>
+
+      <PollWidget />
 
       <div className="rounded-xl bg-gradient-to-br from-[var(--accent)]/10 to-[var(--pink)]/10 border border-[var(--accent)]/20 p-4">
         <div className="flex items-center gap-2 mb-2">

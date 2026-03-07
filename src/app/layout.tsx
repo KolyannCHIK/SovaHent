@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,11 +33,7 @@ export default function RootLayout({
         <main className="min-h-[calc(100vh-4rem)]">
           {children}
         </main>
-        <footer className="border-t border-[var(--border)] py-6 mt-12">
-          <div className="max-w-7xl mx-auto px-4 text-center text-sm text-[var(--foreground-muted)]">
-            <p>SovaHent &copy; {new Date().getFullYear()} — Все материалы взяты из открытых источников</p>
-          </div>
-        </footer>
+        <Footer />
       </body>
     </html>
   );
